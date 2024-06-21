@@ -1,5 +1,4 @@
 :root {
-  /* --dark-blue: #114f85; */
   --dark-blue: #6d3d81;
   --secondary-color: #d8daf3;
 }
@@ -22,7 +21,7 @@ footer {
   padding-left: 3vw;
 }
 
-#logo-header{
+#logo-header {
   width: 20vw;
   max-width: 200px;
   height: auto;
@@ -37,6 +36,7 @@ footer {
 #header-text {
   display: flex;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
   color: aliceblue;
   margin-top: 1vh;
   padding-right: 3vw;
@@ -49,40 +49,45 @@ footer {
 }
 
 @media only screen and (max-width: 450px) {
-  body{
+  body {
     font-size: 12px;
   }
-  #header-text {
-    margin: auto 15px auto auto;
+  #header-text,
+  #paginas,
+  #contato {
+    margin: auto 20px auto 15px;
+    font-size: 13px !important;
+    justify-content: space-between;
   }
 
   #header-text > h4 {
-    margin: 5px; /* Ajustando a margem */
+    margin: 5px;
   }
 
-  #conteudo-geralSN{
+  #conteudo-geralSN {
     display: flex;
-    flex-direction: column; /* Empilha os itens verticalmente */
+    flex-direction: column;
   }
-  
-  #logo-footer{
+
+  #logo-footer {
     width: 20vw;
   }
 
-
   #conteudo-sobre-nos {
-    order: 2; /* Define a ordem deste item */
-
+    order: 2;
   }
-  #primeiro-paragrafo{
+  #conteudo-sobre-nos > p {
+    text-align: justify !important;
+  }
+  #primeiro-paragrafo {
     margin-right: 20vw;
   }
-  #segundo-paragrafo{
+  #segundo-paragrafo {
     margin-right: 15px;
   }
   #conteudo-sobre-nos > #primeiro-paragrafo,
-  #conteudo-sobre-nos > #segundo-paragrafo{
-    text-align:left;
+  #conteudo-sobre-nos > #segundo-paragrafo {
+    text-align: left;
   }
   #logo-catog {
     order: 1; /* Define a ordem deste item */
@@ -91,43 +96,44 @@ footer {
     right: 0;
     width: 20vw;
   }
-  #logo-sobreNos{
+  #logo-sobreNos {
     width: 100%;
   }
 
-
-  .logo-ong > :first-child{
+  .logo-ong > :first-child {
     display: none;
   }
-  
-  .ongs{
+
+  .ongs {
     align-items: center;
     display: block;
     padding: 0;
     margin: 0;
   }
-  #cao-sem-dono, #gatopoles, #doce-lar{
+  #cao-sem-dono,
+  #gatopoles,
+  #doce-lar {
     padding: 0;
     margin: 0;
     text-align: justify;
   }
   #cao-sem-dono > .conteudo-ong > .sobre-ong > :first-child + ::after {
-    content: ''; /* Cria um espaço onde a imagem será inserida */
+    content: ""; /* Cria um espaço onde a imagem será inserida */
     display: block;
     margin-top: 20px;
-    background-image: url('imagens/cao_sem_dono.png'); /* Adiciona a imagem */
+    background-image: url("imagens/cao_sem_dono.png"); /* Adiciona a imagem */
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain; /* Ajusta o tamanho da imagem */
     height: 130px;
     width: 100%;
   }
- 
+
   #gatopoles > .conteudo-ong > .sobre-ong > :first-child + ::after {
-    content: ''; /* Cria um espaço onde a imagem será inserida */
+    content: ""; /* Cria um espaço onde a imagem será inserida */
     display: block;
     margin-top: 20px;
-    background-image: url('imagens/gatopoleslogo.png'); /* Adiciona a imagem */
+    background-image: url("imagens/gatopoleslogo.png"); /* Adiciona a imagem */
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain; /* Ajusta o tamanho da imagem */
@@ -136,19 +142,102 @@ footer {
   }
 
   #doce-lar > .conteudo-ong > .sobre-ong > :first-child + ::after {
-    content: ''; /* Cria um espaço onde a imagem será inserida */
+    content: ""; /* Cria um espaço onde a imagem será inserida */
     display: block;
     margin-top: 20px;
-    background-image: url('imagens/logo-doceLar.png'); /* Adiciona a imagem */
+    background-image: url("imagens/logo-doceLar.png"); /* Adiciona a imagem */
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain; /* Ajusta o tamanho da imagem */
     height: 130px;
     width: 100%;
   }
+  .container-carrosel {
+    justify-content: space-around !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 300px;
+  }
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #arrow-left {
+    left: 0;
+  }
+  #arrow-right {
+    right: 0;
+    margin-right: 15px;
+  }
 
-  .animal{
+  #banner img {
+    content: url(imagens/banner-roxo2Tablet.png);
+    height: 150px !important;
+  }
+  .animal {
     padding: 0 5px;
+    height: 200px !important;
+  }
+
+  .animal > img {
+    height: 160px !important;
+  }
+}
+
+@media screen and (min-width: 451px) and (max-width: 700px) {
+  header {
+    justify-content: space-between;
+    padding: 5px !important;
+  }
+  header > img {
+    margin-left: 15px !important;
+  }
+  #header-text {
+    justify-content: space-between;
+    width: 70%;
+    font-size: 14px !important;
+    margin-right: 10px;
+  }
+  #conteudo-sobre-nos > p {
+    text-align: justify !important;
+  }
+  .container-carrosel {
+    justify-content: space-around !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 400px;
+  }
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #arrow-left {
+    left: 0;
+  }
+  #arrow-right {
+    right: 0;
+    margin-right: 15px;
+  }
+
+  #banner img {
+    content: url(imagens/banner-roxo2Tablet.png);
+    height: 150px !important;
+  }
+
+  #paginas > h5 {
+    margin-top: 5px;
+  }
+  #paginas,
+  #contato {
+    font-size: 16px !important;
   }
 }
 
@@ -186,14 +275,7 @@ footer {
     margin-top: 20px;
     width: 100%;
   }
-
-  #paginas > h5{
-    margin-top: 5px;
-  }
 }
-
-
-
 
 footer {
   color: aliceblue;
@@ -218,7 +300,8 @@ footer {
   display: flex;
   height: 100%;
 }
-#paginas, #contato{
+#paginas,
+#contato {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -226,9 +309,10 @@ footer {
   height: 90%;
   border-left: 1px solid aliceblue;
   text-align: center;
+  font-size: 20px;
 }
 
-#contato{
+#contato {
   height: 50%;
 }
 #fale-conosco {
@@ -240,8 +324,6 @@ footer > #conteudo-footer > #paginas > h5 > a {
 footer > #contato > h4 {
   margin-top: 10px;
 }
-
-
 
 h3,
 h2 {
@@ -276,6 +358,7 @@ a:hover {
   margin-bottom: 30px;
   text-align: center;
 }
+
 .ongs {
   margin-top: 25px;
 }
@@ -323,12 +406,10 @@ a:hover {
 }
 
 .container-carrosel {
-  width: 100%; /* Largura do contêiner */
+  width: 100%;
   overflow: hidden;
   position: relative;
   margin-bottom: 20px;
-  /* border-top: double 5px var(--dark-blue);
-  border-bottom: double 5px var(--dark-blue); */
 }
 .container-carrosel > h3 {
   text-align: left;
@@ -342,6 +423,7 @@ a:hover {
   justify-content: space-around;
   height: 350px;
 }
+
 .arrow {
   position: absolute;
   top: 50%;
@@ -357,10 +439,17 @@ a:hover {
   right: 0;
   margin-right: 15px;
 }
+
 .animal {
   width: 200px;
   height: auto;
   text-align: left;
+}
+.animal:hover {
+  cursor: pointer;
+  .nome-animal {
+    text-decoration: underline;
+  }
 }
 .animal > img {
   width: 100%;
@@ -382,6 +471,7 @@ a:hover {
   min-width: 500px;
   height: 75%;
   min-height: 300px;
+  max-height: 500px;
   background-color: rgba(255, 252, 252);
   overflow: auto;
   border: solid var(--dark-blue);
@@ -413,10 +503,13 @@ a:hover {
   font-size: large;
   width: 300px;
 }
+#modal > a {
+  color: #6d3d81;
+}
 
 #animalDescription > p > a:link {
   text-decoration: none;
-  color: black;
+  color: var(--dark-blue);
 }
 #animalDescription > p > a:hover {
   text-decoration: underline;

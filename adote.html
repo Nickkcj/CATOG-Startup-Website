@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,7 @@
   </head>
   <body>
     <header>
-      <img src="imagens/logoNova-SF2.png" alt="logo Catog" id="logo-header"/>
+      <img src="imagens/logoNova-SF2.png" alt="logo Catog" id="logo-header" />
       <div id="header-text">
         <h4><a href="index.html"> Sobre nós </a></h4>
         <h4><a href="instituicoes.html"> Instituições </a></h4>
@@ -26,6 +26,14 @@
         <h2 class="nome-cidade">São Paulo, SP</h2>
         <div class="container-carrosel">
           <h3>Cachorros</h3>
+          <div class="arrow" id="arrow-left" onclick="prevSlide('carrosel1')">
+            <img
+              src="imagens/seta-esquerda.png"
+              alt="seta para a esquerda"
+              width="20px"
+              height="20px"
+            />
+          </div>
           <div class="carrosel" id="carrosel1">
             <div
               class="animal"
@@ -109,8 +117,23 @@
               />
               <h4 class="nome-animal">Ema</h4>
             </div>
+            <div
+              class="arrow"
+              id="arrow-right"
+              onclick="nextSlide('carrosel1')"
+            >
+              <img
+                src="imagens/seta-direita.png"
+                alt="seta para a direita"
+                width="20px"
+                height="20px"
+              />
+            </div>
           </div>
-          <div class="arrow" id="arrow-left" onclick="prevSlide('carrosel1')">
+        </div>
+        <div class="container-carrosel">
+          <h3>Gatos</h3>
+          <div class="arrow" id="arrow-left" onclick="prevSlide('carrosel2')">
             <img
               src="imagens/seta-esquerda.png"
               alt="seta para a esquerda"
@@ -118,17 +141,6 @@
               height="20px"
             />
           </div>
-          <div class="arrow" id="arrow-right" onclick="nextSlide('carrosel1')">
-            <img
-              src="imagens/seta-direita.png"
-              alt="seta para a direita"
-              width="20px"
-              height="20px"
-            />
-          </div>
-        </div>
-        <div class="container-carrosel">
-          <h3>Gatos</h3>
           <div class="carrosel" id="carrosel2">
             <div
               class="animal"
@@ -224,14 +236,6 @@
               <h4 class="nome-animal">Marie Laure</h4>
             </div>
           </div>
-          <div class="arrow" id="arrow-left" onclick="prevSlide('carrosel2')">
-            <img
-              src="imagens/seta-esquerda.png"
-              alt="seta para a esquerda"
-              width="20px"
-              height="20px"
-            />
-          </div>
           <div class="arrow" id="arrow-right" onclick="nextSlide('carrosel2')">
             <img
               src="imagens/seta-direita.png"
@@ -246,6 +250,14 @@
         <h2 class="nome-cidade">Florianópolis, SC</h2>
         <div class="container-carrosel">
           <h3>Cachorros</h3>
+          <div class="arrow" id="arrow-left" onclick="prevSlide('carrosel3')">
+            <img
+              src="imagens/seta-esquerda.png"
+              alt="seta para a esquerda"
+              width="20px"
+              height="20px"
+            />
+          </div>
           <div class="carrosel" id="carrosel3">
             <div
               class="animal"
@@ -332,14 +344,6 @@
               <h4 class="nome-animal">Lord</h4>
             </div>
           </div>
-          <div class="arrow" id="arrow-left" onclick="prevSlide('carrosel3')">
-            <img
-              src="imagens/seta-esquerda.png"
-              alt="seta para a esquerda"
-              width="20px"
-              height="20px"
-            />
-          </div>
           <div class="arrow" id="arrow-right" onclick="nextSlide('carrosel3')">
             <img
               src="imagens/seta-direita.png"
@@ -387,11 +391,13 @@
 
     <script>
       function nextSlide(carouselId) {
-        showSlides(carouselId, (slideIndex[carouselId] += 3));
+       // showSlides(carouselId, (slideIndex[carouselId] += 3));
+       showSlides(carouselId, (slideIndex[carouselId] += getSlidesPerView()));
       }
 
       function prevSlide(carouselId) {
-        showSlides(carouselId, (slideIndex[carouselId] -= 3));
+       // showSlides(carouselId, (slideIndex[carouselId] -= 3));
+       showSlides(carouselId, (slideIndex[carouselId] -= getSlidesPerView()));
       }
 
       function showSlides(carouselId, n) {
@@ -399,19 +405,28 @@
         var slides = document
           .getElementById(carouselId)
           .getElementsByClassName("animal");
+        
         if (!slideIndex[carouselId]) {
           slideIndex[carouselId] = 0;
         } // Inicializa slideIndex se não estiver definido
+
+        const slidesPerView = getSlidesPerView();
+
         if (n >= slides.length) {
           slideIndex[carouselId] = 0;
         }
+
         if (n < 0) {
-          slideIndex[carouselId] = slides.length - 3;
+         // slideIndex[carouselId] = slides.length - 3;
+         slideIndex[carouselId] = slides.length - slidesPerView;
         }
+
         for (i = 0; i < slides.length; i++) {
           slides[i].style.display = "none";
         }
-        for (i = slideIndex[carouselId]; i < slideIndex[carouselId] + 3; i++) {
+
+        //for (i = slideIndex[carouselId]; i < slideIndex[carouselId] + 3; i++) {
+        for (i = slideIndex[carouselId]; i < slideIndex[carouselId] + slidesPerView; i++) {
           if (slides[i]) {
             // Verifica se o slide existe
             slides[i].style.display = "block";
@@ -427,11 +442,18 @@
         }
       }
 
+      function getSlidesPerView() {
+        return window.innerWidth <= 768 ? 2 : 3;
+      }
+
       // Aqui estão os índices de slideIndex para cada carrossel
       var slideIndex = {};
 
       // Inicializa os carrosséis quando a página carregar
+      // window.onload = initializeCarousels;
       window.onload = initializeCarousels;
+      window.onresize = initializeCarousels; // Reinitialize on window resize
+
 
       function openModal(imageSrc, options) {
         while (animalDescription.firstChild) {
@@ -448,15 +470,6 @@
         var nascimentoElement = document.getElementById("nascimento");
         var racaElement = document.getElementById("raca");
 
-        // modal.style.display = "block";
-        // modalImg.src = imageSrc;
-
-        // sexoElement.textContent = sexo
-        // pelagemElement.textContent = pelagem
-        // pesoElement.textContent = peso
-        // nascimentoElement.textContent =  nascimento
-        // racaElement.textContent = raca
-        // queroAdotar.href = link;
         modal.style.display = "block";
         modalImg.src = imageSrc;
         animalNameElement.textContent = options.animalName;
